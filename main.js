@@ -1,5 +1,5 @@
 // 载入electron模块
-const {app,BrowserWindow,Menu,shell } = require("electron");
+const {app,BrowserWindow,Menu,shell,globalShortcut } = require("electron");
 
 // 创建应用程序对象
 // 创建一个浏览器窗口，主要用来加载HTML页面
@@ -13,6 +13,7 @@ const debug = /--debug/.test(process.argv[2]);
 app.on("ready",()=>{
     buildMenu();
     createWindow();
+    shortcut();
 });
 
 // 监听应用程序对象中的所有浏览器窗口对象是否全部被关闭，如果全部被关闭，则退出整个应用程序。该
@@ -253,3 +254,27 @@ function findReopenMenuItem () {
     })
     return reopenMenuItem;
 }
+
+
+/**
+ * 设置全局快捷键
+ */
+function shortcut() {
+    const ret = globalShortcut.register('CommandOrControl+X', () => {
+        console.log('CommandOrControl+X is pressed')
+    })
+    if (!ret) {
+        console.log('registration failed')
+    }
+
+    console.log(globalShortcut.isRegistered('CommandOrControl+X'))
+
+}
+
+app.on('will-quit', () => {
+    // 注销快捷键
+    globalShortcut.unregister('CommandOrControl+X');
+
+    // 注销所有快捷键
+    globalShortcut.unregisterAll()
+});
