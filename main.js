@@ -1,17 +1,13 @@
 // 载入electron模块
-const electron = require("electron");
+const {app,BrowserWindow} = require("electron");
 
 // 创建应用程序对象
-const app=electron.app;
 // 创建一个浏览器窗口，主要用来加载HTML页面
-const BrowserWindow=electron.BrowserWindow;
 
 // 声明一个BrowserWindow对象实例
 let mainWindow;
 
-let env = process.env;
 const debug = /--debug/.test(process.argv[2]);
-
 
 // 监听应用程序对象是否初始化完成，初始化完成之后即可创建浏览器窗口
 app.on("ready",createWindow);
@@ -48,6 +44,7 @@ function createWindow(){
     mainWindow=new BrowserWindow({
         width:1200,
         height:800,
+        nodeIntegration:true
     });
 
     if (debug){

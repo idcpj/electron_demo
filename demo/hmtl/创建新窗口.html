@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>创建新窗口</title>
+</head>
+<body>
+<a href="index.html">返回首页</a>
+<hr>
+
+<button id="demo1">创建新窗口</button>
+
+<script>
+    const {BrowserWindow} = require('electron').remote;
+    const path = require('path');
+    let demo1 = document.getElementById('demo1');
+    demo1.addEventListener('click', () => {
+
+        let win = new BrowserWindow({
+            width: 500,
+            height: 500,
+            frame:false,
+
+        });
+        let subWindow = path.join("file://", __dirname, '子窗口.html');
+        if (!subWindow) {
+            console.error("subWindow is error", subWindow);
+        }
+
+        win.on('close', () => null);
+        win.loadURL(subWindow);
+        win.show();
+    });
+</script>
+</body>
+</html>
