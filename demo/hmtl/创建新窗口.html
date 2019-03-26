@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>创建新窗口</title>
+    <style>
+        .hide{
+            display: none;
+        }
+        .show{
+            display: block;
+        }
+    </style>
 </head>
 <body>
 <a href="index.html">返回首页</a>
@@ -11,16 +19,36 @@
 
 <button id="demo1">创建新窗口</button>
 
+<div>
+    <p>窗口信息 </p>
+    <p>size <span class="size"></span></p>
+    <p>position <span class="position"></span></p>
+</div>
+
+<div>
+    <p>子窗口焦点信息: <span class="blur"></span></p>
+    <p><button class="subfouces hide">聚焦到子窗口</button></p>
+</div>
+
+
 <script>
-    const {BrowserWindow} = require('electron').remote;
+    const {BrowserWindow} = require("electron").remote;
     const path = require('path');
     let demo1 = document.getElementById('demo1');
+    let blur  = document.querySelector('.blur');
+    let size  = document.querySelector('.size');
+    let position  = document.querySelector('.position');
+    let subfouces = document.querySelector('.subfouces');
+
+    let win=null;
     demo1.addEventListener('click', () => {
 
-        let win = new BrowserWindow({
+         win = new BrowserWindow({
             width: 500,
             height: 500,
-            frame:false,
+//            frame:false,
+//            transparent:true,
+             backgroundColor: '#2e2c29'
 
         });
         let subWindow = path.join("file://", __dirname, '子窗口.html');
@@ -28,10 +56,43 @@
             console.error("subWindow is error", subWindow);
         }
 
+
+        let getWindowInfo = ()=> {
+            if (!win) return;
+            console.log(win);
+            size.innerText =win.getSize();
+            position.innerText =win.getPosition();
+
+        };
+        let Blur = ()=>{
+            if (!win) return;
+            blur.innerText="失去焦点";
+            subfouces.classList.add('show');
+        };
+        let Focus=()=>{
+            if (!win) return;
+            blur.innerText="得到焦点";
+            subfouces.classList.remove('show');
+            subfouces.classList.add('hide');
+        };
+        win.on('resize',getWindowInfo);
+        win.on('move',getWindowInfo);
+        win.on('blur',Blur);
+        win.on('focus',Focus);
         win.on('close', () => null);
         win.loadURL(subWindow);
         win.show();
+
+        //子窗口获取焦点
+        subfouces.addEventListener('click',()=>{
+            console.log(win);
+            win.focus();
+        })
+
+
+
     });
+
 </script>
 </body>
 </html>
