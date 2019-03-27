@@ -1,5 +1,5 @@
 // 载入electron模块
-const {app,BrowserWindow,Menu,shell,globalShortcut } = require("electron");
+const {app,BrowserWindow,Menu,shell,globalShortcut,ipcMain } = require("electron");
 
 // 创建应用程序对象
 // 创建一个浏览器窗口，主要用来加载HTML页面
@@ -278,3 +278,9 @@ app.on('will-quit', () => {
     // 注销所有快捷键
     globalShortcut.unregisterAll()
 });
+
+//ipcMain  处理
+ipcMain.on("main_liston",(event,arg)=>{
+    console.log(arg);
+    event.sender.send("renderer_liston",'main to renderer')
+})

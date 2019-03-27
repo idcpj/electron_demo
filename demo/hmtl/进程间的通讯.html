@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>进程间的通讯</title>
+</head>
+<body>
+<a href="index.html">返回首页</a>
+<hr><br>
+
+<button onclick="sendmsg()"> 进程间通讯</button>
+
+<p></p>
+<script>
+    const {ipcRenderer} = require('electron');
+    const p=document.querySelector('p');
+    let num=0;
+    function sendmsg(){
+        num++;
+        ipcRenderer.send('main_liston',`renderer to main num:`);
+        ipcRenderer.on('renderer_liston',(event,arg)=>{
+            p.innerText +=`accept arg is '${arg}'  num is ${num}\n`
+
+        })
+    }
+</script>
+</body>
+</html>
