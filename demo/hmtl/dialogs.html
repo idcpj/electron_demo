@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>dialogs</title>
+</head>
+<body>
+<a href="index.html">返回首页</a>
+<hr><br>
+
+<button onclick="filedialog()">文件对话框</button>
+<p class="showFileInfo"> </p>
+<button onclick="errordialog()">错误对话框</button><br><br>
+<button onclick="messageDialog()">确认对话框</button>
+<p class="showcheck"></p>
+<button onclick="saveDialog()">文件保存对话框</button><br><br>
+
+<script>
+
+    const {dialog} =require('electron').remote;
+
+    function filedialog() {
+        const filters = [
+            { name: 'Images', extensions: ['jpg', 'png', 'gif'] },
+//            { name: 'Movies', extensions: ['mkv', 'avi', 'mp4'] },
+//            { name: 'Custom File Type', extensions: ['as'] },
+//            { name: 'All Files', extensions: ['*'] }
+        ];
+        dialog.showOpenDialog({
+            title:'测试标题 title',
+            defaultPath :'D:',//选择打开路径
+            properties: ['openFile',],//openFile=只显示文件  openDirectory=只显示路径
+            filters:filters,
+            multiSelections:true,
+        }, (files) => {
+            document.querySelector('.showFileInfo').innerText=files.toString()
+        })
+    }
+
+    function errordialog(){
+        dialog.showErrorBox('this is a title','body body body ')
+    }
+
+    function messageDialog() {
+        const buttons = ['yes','no','不确定','不确定2'];
+        const option={
+            type:'question',//"none", "info", "error", "question" 或者 "warning"
+            title:" this is a title",
+            message:"this is a message!",
+            buttons: buttons
+//            icon:""
+        };
+
+        dialog.showMessageBox(option, (index, checkboxChecked) => {
+            document.querySelector('.showcheck').innerText=`you check is ${buttons[index]}`;
+        });
+    }
+
+    function saveDialog(){
+        const option={
+            title:"this is a title",
+            defaultPath:'',// 默认保存的绝对路径
+        }
+        dialog.showSaveDialog(option,function (filename ) {
+            console.log(filename);
+        })
+    }
+
+</script>
+</body>
+</html>
