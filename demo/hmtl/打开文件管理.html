@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>打开文件管理</title>
+</head>
+<body>
+<a href="index.html">返回首页</a>
+<hr>
+<br>
+
+<button onclick="openurl()">默认浏览器打开url</button>   <br><br>
+<button onclick="openimg()">打开图片(openExternal)</button>   <br><br>
+<button onclick="openItem()">打开图片(openItem)</button>  <br><br>
+<button onclick="openFolder()">打开文件所在位置</button><br><br>
+
+<script>
+    const {shell} =require('electron').remote;
+    const path = require('path');
+
+    function openurl(){
+        shell.openExternal("www.baidu.com")
+    }
+    function openimg() {
+        let filepath = path.join(__dirname,'../img/demo.png');
+        shell.openExternal(filepath) // 绝对路径
+    }
+    function openFolder(){
+        let filepath = path.join(__dirname,'../img/demo.png');
+        shell.showItemInFolder(filepath)
+    }
+    function openItem(){
+        let filepath = path.join(__dirname,'../img/demo.png');
+        shell.openItem(filepath)
+    }
+</script>
+</body>
+</html>
