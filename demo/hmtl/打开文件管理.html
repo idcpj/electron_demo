@@ -26,13 +26,13 @@
         let filepath = path.join(__dirname,'../img/demo.png');
         shell.openExternal(filepath) // 绝对路径
     }
-    function openFolder(){
-        let filepath = path.join(__dirname,'../img/demo.png');
-        shell.showItemInFolder(filepath)
-    }
     function openItem(){
         let filepath = path.join(__dirname,'../img/demo.png');
         shell.openItem(filepath)
+    }
+    function openFolder(){
+        let filepath = path.join(__dirname,'../img/demo.png');
+        shell.showItemInFolder(filepath)
     }
 </script>
 </body>
