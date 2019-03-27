@@ -260,14 +260,14 @@ function findReopenMenuItem () {
  * 设置全局快捷键
  */
 function shortcut() {
-    const ret = globalShortcut.register('CommandOrControl+X', () => {
+    const ret = globalShortcut.register('CommandOrControl+9', () => {
         console.log('CommandOrControl+X is pressed')
     })
     if (!ret) {
         console.log('registration failed')
     }
 
-    console.log(globalShortcut.isRegistered('CommandOrControl+X'))
+    console.log(globalShortcut.isRegistered('CommandOrControl+9'))
 
 }
 
