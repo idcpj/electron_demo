@@ -11,11 +11,24 @@
 <hr>
 
 
-<button onclick="writeBoard()">写入剪切板</button>
+<input type="text" name="test_clip" value="this is a test clipboard">
+<button onclick="writeBoard()">复制</button> <br/><br/>
+
+<input type="text"  name="test_read">
+<button onclick="readBoard()">粘贴</button>
+
 <script>
     const {clipboard} =require('electron');
+    let clip = document.querySelector('input[name=test_clip]');
+    let read = document.querySelector('input[name=test_read]');
+
+
     function writeBoard() {
-        clipboard.writeText('this is a test clipboard');
+        clipboard.writeText(clip.value);
+    }
+    function readBoard(){
+        let s = clipboard.readText();
+        read.value=s
     }
     
 </script>
