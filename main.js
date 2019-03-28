@@ -69,7 +69,7 @@ function createWindow(){
     }
 
     // 通过浏览器窗口对象加载index.html文件，同时也是可以加载一个互联网地址的
-    mainWindow.loadURL('file://'+__dirname+'/demo/hmtl/index.html');
+    mainWindow.loadURL('file://'+__dirname+'/demo/html/index.html');
     // 同时也可以简化成：mainWindow.loadURL('./index.html');
 
     // 监听浏览器窗口对象是否关闭，关闭之后直接将mainWindow指向空引用，也就是回收对象内存空间
