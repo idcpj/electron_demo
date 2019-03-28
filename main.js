@@ -1,5 +1,5 @@
 // 载入electron模块
-const {app,BrowserWindow,ipcMain } = require("electron");
+const {app,BrowserWindow } = require("electron");
 
 let {buildMenu,findReopenMenuItem} = require('./demo/js/任务列表');
 const {shortcut,unregister} = require('./demo/js/设置全局快捷键');
