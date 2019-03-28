@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>文件拖拽</title>
+</head>
+<body>
+<a href="index.html">返回首页</a>
+<hr><br>
+
+
+
+<div id="holder" style="width: 200px;height: 200px;background-color: #cccccc;">
+    文件拖拽
+</div>
+
+<script>
+    var holder = document.getElementById('holder');
+    holder.ondragover = function () {
+        return false;
+    };
+    holder.ondragleave = holder.ondragend = function () {
+        return false;
+    };
+    holder.ondrop = function (e) {
+        e.preventDefault();
+        let file = e.dataTransfer.files;
+        console.log(file);
+        return false;
+    };
+</script>
+</body>
+</html>
