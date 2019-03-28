@@ -29,6 +29,9 @@
     <p>子窗口焦点信息: <span class="blur"></span></p>
     <p><button class="subfouces hide">聚焦到子窗口</button></p>
 </div>
+<hr><br><br>
+<button onclick="noframe()" >无边框的窗口</button>
+
 
 
 <script>
@@ -40,21 +43,18 @@
     let position  = document.querySelector('.position');
     let subfouces = document.querySelector('.subfouces');
 
+    let subWindow = path.join("file://", __dirname, '子窗口.html');
+
+
     let win=null;
     demo1.addEventListener('click', () => {
 
          win = new BrowserWindow({
             width: 500,
             height: 500,
-//            frame:false,
-//            transparent:true,
              backgroundColor: '#2e2c29'
 
         });
-        let subWindow = path.join("file://", __dirname, '子窗口.html');
-        if (!subWindow) {
-            console.error("subWindow is error", subWindow);
-        }
 
 
         let getWindowInfo = ()=> {
@@ -93,6 +93,16 @@
 
 
     });
+
+    function noframe(){
+        let new1 = new BrowserWindow({
+            width: 500,
+            height: 500,
+            frame:false,});
+        new1.loadURL(subWindow);
+        new1
+        new1.show();
+    }
 
 </script>
 </body>
