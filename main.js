@@ -1,8 +1,9 @@
 // 载入electron模块
-const {app,BrowserWindow,globalShortcut,ipcMain } = require("electron");
+const {app,BrowserWindow,ipcMain } = require("electron");
 
 let {buildMenu,findReopenMenuItem} = require('./demo/js/任务列表');
 const {shortcut,unregister} = require('./demo/js/设置全局快捷键');
+require('./demo/js/ipcMain');//进程间通讯
 
 
 // 创建应用程序对象
@@ -85,10 +86,4 @@ function createWindow(){
 
 app.on('will-quit', () => {
     unregister()
-});
-
-//ipcMain  处理
-ipcMain.on("main_liston",(event,arg)=>{
-    console.log(arg);
-    event.sender.send("renderer_liston",'main to renderer')
 });
