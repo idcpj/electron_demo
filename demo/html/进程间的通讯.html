@@ -19,11 +19,15 @@
     function sendmsg(){
         num++;
         ipcRenderer.send('main_liston',`renderer to main num:`);
-        ipcRenderer.on('renderer_liston',(event,arg)=>{
-            p.innerText +=`accept arg is '${arg}'  num is ${num}\n`
-
-        })
     }
+    ipcRenderer.on('renderer_liston',(event,arg)=>{
+        let innerText = `accept arg is '${arg}'  num is ${num}\n`;
+        console.log(innerText);
+        p.innerText +=innerText
+
+    });
+
+
 </script>
 </body>
 </html>
