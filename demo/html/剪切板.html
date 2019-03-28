@@ -15,12 +15,29 @@
 <button onclick="writeBoard()">复制</button> <br/><br/>
 
 <input type="text"  name="test_read">
-<button onclick="readBoard()">粘贴</button>
+<button onclick="readBoard()">粘贴</button>  <br/><br/>
+
+<hr><br/><br/>
+
+<img class="write_img" src="../img/demo.png"  width="100"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button onclick="writeimg()">写入图片</button>  <br/><br/>
+
+<input type="text" name="test_img"> <br>
+<img class="read_img"  width="100"><br>
+<button onclick="readimg()"> 读取图片信息</button> <br/><br/>
+
+<hr><br/><br/>
+
+请复制一段word 或excel 的文字 <br/><br/>
+<button onclick="rtf()">  读取富文本 rtf</button><br/><br/>
 
 <script>
-    const {clipboard} =require('electron');
+    const {clipboard,nativeImage} =require('electron');
+    console.log(nativeImage);
     let clip = document.querySelector('input[name=test_clip]');
     let read = document.querySelector('input[name=test_read]');
+    let write_img = document.querySelector('.write_img');
+    let read_img = document.querySelector('.read_img');
 
 
     function writeBoard() {
@@ -29,6 +46,25 @@
     function readBoard(){
         let s = clipboard.readText();
         read.value=s
+    }
+
+    let img=null
+    function readimg() {
+        img = clipboard.readImage();
+        console.log("isEmpty ",img.isEmpty());
+        read_img.src = img.toDataURL(); //data:image/png;base64,iVBORw0K...
+    }
+
+    function writeimg(){
+        let src = write_img.src;
+        src = src.replace('file:///','');
+        let nativeImage2 = nativeImage.createFromPath(src);
+        clipboard.writeImage(nativeImage2);
+    }
+
+    function rtf(){
+        let s = clipboard.readRTF();
+        console.log(s);
     }
     
 </script>
