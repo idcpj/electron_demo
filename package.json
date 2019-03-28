@@ -6,9 +6,9 @@
     "start": "electron .",
     "dev": "electron . --debug"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
-    "electron": "^4.1.1"
+    "electron": "^4.1.1",
+    "highlight.js": "^9.15.6"
   }
 }
