@@ -82,6 +82,7 @@
         win.on('close', () => null);
         win.loadURL(subWindow);
         win.show();
+        win.setMenu(null);
 
         //子窗口获取焦点
         subfouces.addEventListener('click',()=>{
