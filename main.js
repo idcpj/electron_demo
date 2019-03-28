@@ -1,7 +1,8 @@
 // 载入electron模块
-const {app,BrowserWindow,Menu,shell,globalShortcut,ipcMain } = require("electron");
+const {app,BrowserWindow,globalShortcut,ipcMain } = require("electron");
 
 let {buildMenu,findReopenMenuItem} = require('./demo/js/任务列表');
+const {shortcut,unregister} = require('./demo/js/设置全局快捷键');
 
 
 // 创建应用程序对象
@@ -82,29 +83,8 @@ function createWindow(){
 
 
 
-
-
-/**
- * 设置全局快捷键
- */
-function shortcut() {
-    const ret = globalShortcut.register('CommandOrControl+9', () => {
-        console.log('CommandOrControl+X is pressed')
-    });
-    if (!ret) {
-        console.log('registration failed')
-    }
-
-    console.log(globalShortcut.isRegistered('CommandOrControl+9'))
-
-}
-
 app.on('will-quit', () => {
-    // 注销快捷键
-    globalShortcut.unregister('CommandOrControl+X');
-
-    // 注销所有快捷键
-    globalShortcut.unregisterAll()
+    unregister()
 });
 
 //ipcMain  处理
