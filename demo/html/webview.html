@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>webview</title>
+</head>
+<body>
+
+
+<webview id="foo" src="./子webview.html" style="display:inline-block; width:640px; height:480px"></webview>
+<br><br><br>
+
+<p>加载状况: <span class="indicator"></span> </p>
+
+
+<script>
+window.onload=()=>{
+    const webview = document.querySelector('#foo');
+    const indicator = document.querySelector('.indicator');
+
+    let loadstart = ()=> {
+        indicator.innerText = "loading...";
+        webview.openDevTools();
+        console.log(webview.isAudioMuted());;
+    }
+    let loadstop = ()=> {
+        indicator.innerText = "ok";
+    }
+    webview.addEventListener("did-start-loading", loadstart);
+    webview.addEventListener("did-stop-loading", loadstop);
+}
+
+</script>
+</body>
+</html>
