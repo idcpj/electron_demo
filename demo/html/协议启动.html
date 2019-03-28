@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>协议启动</title>
+</head>
+<body>
+<a href="index.html">返回首页</a>
+<hr><br>
+
+<button onclick="openurl()"> 打开页面</button>
+<script type="text/javascript">
+
+    const {shell} =require('electron');
+    const path = require('path');
+
+    function openurl() {
+        let htmlPath = path.join(__dirname,'协议启动激活页面.html');
+        shell.openExternal(htmlPath)
+    }
+
+</script>
+</body>
+</html>
