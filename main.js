@@ -4,6 +4,7 @@ const {app,BrowserWindow } = require("electron");
 let {buildMenu,findReopenMenuItem} = require('./demo/js/创建菜单');
 const {shortcut,unregister} = require('./demo/js/设置全局快捷键');
 require('./demo/js/ipcMain');//进程间通讯
+require('./demo/js/任务列表');//进程间通讯
 
 
 // 创建应用程序对象
