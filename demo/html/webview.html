@@ -7,6 +7,9 @@
 </head>
 <body>
 
+<a href="index.html">返回首页</a>
+<hr><br>
+
 
 <webview id="foo" src="./子webview.html" style="display:inline-block; width:640px; height:480px"></webview>
 <br><br><br>
@@ -21,8 +24,8 @@ window.onload=()=>{
 
     let loadstart = ()=> {
         indicator.innerText = "loading...";
-        webview.openDevTools();
-        console.log(webview.isAudioMuted());;
+//        webview.openDevTools();
+//        console.log(webview.isAudioMuted());; //是否流畅
     }
     let loadstop = ()=> {
         indicator.innerText = "ok";
