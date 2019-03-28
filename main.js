@@ -4,8 +4,9 @@ const {app,BrowserWindow } = require("electron");
 let {buildMenu,findReopenMenuItem} = require('./demo/js/创建菜单');
 const {shortcut,unregister} = require('./demo/js/设置全局快捷键');
 require('./demo/js/ipcMain');//进程间通讯
-require('./demo/js/任务列表');//进程间通讯
+require('./demo/js/任务列表');//任务列表
 
+const {Single}  =require('./demo/js/单例启动');
 
 // 创建应用程序对象
 // 创建一个浏览器窗口，主要用来加载HTML页面
@@ -20,6 +21,9 @@ app.on("ready",()=>{
     buildMenu();
     createWindow();
     shortcut();
+
+    // Single(mainWindow) //需要时打开
+
 });
 
 // 监听应用程序对象中的所有浏览器窗口对象是否全部被关闭，如果全部被关闭，则退出整个应用程序。该
