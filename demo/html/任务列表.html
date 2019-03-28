@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>任务列表</title>
+    <link rel="stylesheet" href="../../node_modules/highlight.js/styles/default.css">
 </head>
 <body>
 <a href="index.html">返回首页</a>
 <hr>
 
 只是实例,生效需在主进程
-<pre><code class="language-js">
+<pre><code >
+    const app = require('electron');
     app.setJumpList([
         {
             type: 'custom',
@@ -66,7 +68,9 @@
     ])
 </code></pre>
 
-
+<script>
+    require('../../assets/js/highlight.js')
+</script>
 
 </body>
 </html>
