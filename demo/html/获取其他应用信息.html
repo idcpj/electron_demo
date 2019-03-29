@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>获取其他应用信息</title>
+</head>
+<body>
+<a href="index.html">返回首页</a>
+<hr><br>
+<button onclick="getsource()">获取资源信息</button>
+
+<ol>
+     <li>id:<b>${item.id}</b> <br>
+        name: <b title="${item.name}">${shortName}</b> <br>
+        缩略图 : <img src="${imgurl}" style="width: 150px;"  alt="无缩略图"> <br>
+    </li>
+</ol>
+
+
+<script>
+
+    // 在渲染进程中.
+    const {desktopCapturer } = require('electron');
+    const olDOM = document.querySelector('ol');
+
+    function getsource(){
+        desktopCapturer.getSources({types: ['window', 'screen']}, function(error, sources) {
+            if (error) throw error;
+            console.log("asd");
+            console.log(sources);
+            let htmlAll = "";
+            sources.forEach(item=>{
+                let shortName="";
+                if (item.name.length<=5){
+                    shortName=item.name
+                }else{
+                    shortName = item.name.slice(0,5)+"...";
+                }
+
+                let imgurl = item.thumbnail.toDataURL();
+
+                let html =`<li>id:<b>${item.id}</b> <br>
+        name: <b title="${item.name}">${shortName}</b> <br>
+        缩略图 : <img src="${imgurl}" style="width: 150px;"  alt="无缩略图"> <br>
+    </li> `;
+
+
+                htmlAll+=html;
+            });
+            olDOM.innerHTML=htmlAll;
+
+        });
+    }
+
+
+</script>
+</body>
+</html>
