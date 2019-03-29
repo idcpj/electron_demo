@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>electron-log</title>
+</head>
+<body>
+
+<a href="index.html">返回首页</a>
+<hr><br>
+
+是否开启文件日志和 控制台日志
+<pre><code>
+log.transports.file.level = false; //是否输出到 日志文件
+log.transports.console.level = false; //是否输出到 控制台
+</code></pre>
+
+
+文件日志所在位置
+<pre>
+    <code>
+on Linux: ~/.config/app_name/log.log
+on macOS: ~/Library/Logs/app_name/log.log
+on Windows: %USERPROFILE%\AppData\Roaming\app_name\log.log
+    </code>
+</pre>
+<button onclick="send()">发送日志</button>
+<script>
+    const log = require('electron-log');
+
+
+    function send(){
+        log.error('error!');
+
+        log.info('info!');
+        log.warn('warn!');
+        log.verbose('verbose!');
+        log.debug('debug!');
+        log.silly('silly!');
+    }
+
+</script>
+
+
+</body>
+</html>
