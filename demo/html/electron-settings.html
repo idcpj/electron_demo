@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>electron-settings</title>
+    <link rel="stylesheet" href="../../node_modules/highlight.js/styles/default.css">
+
+</head>
+<body>
+
+
+<a href="index.html">返回首页</a>
+<hr><br>
+
+<pre>
+    <code>
+//在主进程中
+const {app} =require('electron');
+const settings = require('electron-settings');
+
+app.on('ready',()=>{
+    settings.set('name', {
+        first: 'Cosmo',
+        last: 'Kramer'
+    });
+})
+//在渲染进程中
+settings.get('name.first')
+    </code>
+</pre>
+
+<button onclick="getsettings()">获取配置</button>
+<p></p>
+<script>
+    require('../../assets/js/highlight.js')
+    const settings = require('electron-settings');
+    const pDOM = document.querySelector('p');
+
+    function getsettings(){
+        if (settings.has('name.first')){
+            pDOM.innerHTML = 'name.first : "'+ settings.get('name.first')+'"';
+        }
+    }
+</script>
+</body>
+</html>
