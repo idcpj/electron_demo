@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>应用崩溃报告</title>
+</head>
+<body>
+
+<a href="index.html">返回首页</a>
+<hr><br>
+
+<button onclick="senderror()">发送崩溃报告</button>
+<script>
+    const {crashReporter} = require('electron');
+
+    function senderror(){
+        crashReporter.start({
+            productName: 'YourName',
+            companyName: 'YourCompany',
+            submitURL: 'https://your-domain.com/url-to-submit',
+            autoSubmit: false,
+        });
+    }
+
+
+</script>
+</body>
+</html>
