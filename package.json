@@ -1,14 +1,19 @@
 {
   "name": "electron-demo",
-  "version": "1.0.5",
+  "version": "1.0.4",
   "main": "main.js",
+  "repository": "https://github.com/idcpj/electron_demo/",
   "scripts": {
     "start": "electron .",
-    "dev": "electron . --debug"
+    "dev": "electron . --debug",
+    "package:win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --out=out "
   },
-  "devDependencies": {},
-  "dependencies": {
+  "devDependencies": {
     "electron": "^4.1.1",
+    "electron-packager": "^13.1.1",
+    "electron-winstaller": "^3.0.4"
+  },
+  "dependencies": {
     "electron-log": "^3.0.4",
     "electron-settings": "^3.2.0",
     "highlight.js": "^9.15.6",
