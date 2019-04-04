@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>打包</title>
+</head>
+<body>
+<a href="index.html">返回首页</a>
+<hr><br>
+
+需要用到的包为
+<pre><code>
+    npm i -D electron-packager
+</code></pre>
+
+在package.json的script 中进行设置,可做参考
+<pre><code>
+    "package:win32": "electron-packager ./ ele_demo --app-version=1.0.4  --platform=win32  --arch=ia32 --overwrite --out=out --icon=./assets/img/ele.ico",
+    "package:win64": "electron-packager ./ ele_demo --app-version=1.0.4  --platform=win32  --arch=x64  --overwrite --out=out --icon=./assets/img/ele.ico",
+    "package:linux": "electron-packager ./ ele_demo --app-version=1.0.4  --platform=linux  --arch=x64  --overwrite --out=out --icon=./assets/img/ele.ico",
+    "package:mac":   "electron-packager ./ ele_demo --app-version=1.0.4  --platform=darwin --arch=x64  --overwrite --out=out --icon=./assets/img/ele.ico",
+    "package:all":   "electron-packager ./ ele_demo --app-version=1.0.4  --all                         --overwrite --out=out --icon=./assets/img/ele.ico"
+</code></pre>
+
+打包成加密
+<pre><code>npm i -D asar</code></pre>
+
+配置 package.json
+<pre><code>    "asar:win32": "asar pack out/package-win32-ia32/resources/app/ out/package-win32-ia32/resources/app.asar"
+</code></pre>
+
+
+生成安装器
+
+
+</body>
+</html>
