@@ -7,5 +7,62 @@
 </head>
 <body>
 
+scripts 中添加
+<pre><code>
+    "builder:win:32": "electron-builder --win --ia32",
+    "builder:win:64": "electron-builder --win --x64",
+    "builder:mac": "electron-builder  --mac",
+    "builder:linux": "electron-builder  --linux",
+    "builder:all": "electron-builder -mwl"
+</code></pre>
+
+在package.json 中配置
+<pre><code>
+     "build": {
+    "productName":"ele_demo",
+    "artifactName":"${productName}-${version}.${ext}",
+    "appId": "com.electron.idcpj",
+    "copyright":"Copyright © year ${author}",
+    "directories": {
+      "output": "dist"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    },
+    "win": {
+      "icon": "assets/img/ele.png",
+      "target": [
+          "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "ele_图标名",
+      "include":"script/builder.nsi"
+    }
+  }
+</code></pre>
+
+
+
 </body>
 </html>
