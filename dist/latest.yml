@@ -1,8 +1,8 @@
 version: 1.0.4
 files:
-  - url: ele_demo-1.0.4.exe
-    sha512: 8nKI3lXJyMU+kRmg4TNYcNvRpEa1/P6NGZ1NlEuDPdu/EOBfEAO8J1EMDTg1GXRofhknvwilGheVmEJUnXvAZA==
-    size: 42324661
-path: ele_demo-1.0.4.exe
-sha512: 8nKI3lXJyMU+kRmg4TNYcNvRpEa1/P6NGZ1NlEuDPdu/EOBfEAO8J1EMDTg1GXRofhknvwilGheVmEJUnXvAZA==
-releaseDate: '2019-04-08T11:08:21.899Z'
+  - url: ele_demo-1.0.3.exe
+    sha512: 2VZO1rY75hWaQ0QzxQWFwF56cq8X20v1n/81ZTZ8hfxhM2IT9z1h96f6AMiy8i1VFpNeCoUjdz+F4PesyFortA==
+    size: 42787914
+path: ele_demo-1.0.3.exe
+sha512: 2VZO1rY75hWaQ0QzxQWFwF56cq8X20v1n/81ZTZ8hfxhM2IT9z1h96f6AMiy8i1VFpNeCoUjdz+F4PesyFortA==
+releaseDate: '2019-04-08T11:38:27.714Z'
