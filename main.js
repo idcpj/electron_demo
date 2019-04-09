@@ -13,7 +13,7 @@ require('./demo/js/settings');//任务列表
 // 创建一个浏览器窗口，主要用来加载HTML页面
 
 // 声明一个BrowserWindow对象实例
-let mainWindow;
+mainWindow = global.mainWindow;
 
 const debug = /--debug/.test(process.argv[2]);
 
@@ -86,6 +86,9 @@ function createWindow(){
     mainWindow.on("closed",function(){
         mainWindow = null;
     });
+
+    const  {updateHandle} = require('./demo/js/设置更新');//任务列表
+    updateHandle()
 }
 
 

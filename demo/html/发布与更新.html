@@ -18,14 +18,20 @@ scripts 中添加
 
 在package.json 中配置
 <pre><code>
-     "build": {
-    "productName":"ele_demo",
-    "artifactName":"${productName}-${version}.${ext}",
+    "build": {
+    "productName": "ele_demo",
+    "artifactName": "${productName}-${version}.${ext}",
     "appId": "com.electron.idcpj",
-    "copyright":"Copyright © year ${author}",
+    "copyright": "Copyright © year ${author}",
     "directories": {
       "output": "dist"
     },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "https://github.com/idcpj/electron_demo/demo"
+      }
+    ],
     "dmg": {
       "contents": [
         {
@@ -47,7 +53,7 @@ scripts 中添加
     "win": {
       "icon": "assets/img/ele.png",
       "target": [
-          "nsis"
+        "nsis"
       ]
     },
     "nsis": {
@@ -57,9 +63,9 @@ scripts 中添加
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "ele_图标名",
-      "include":"script/builder.nsi"
+      "include": "script/builder.nsi"
     }
-  }
+  },
 </code></pre>
 
 

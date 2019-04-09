@@ -1,0 +1,4 @@
+owner: idcpj
+repo: electron_demo
+provider: github
+updaterCacheDirName: electron-demo-updater
