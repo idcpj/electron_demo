@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>electron-store</title>
+</head>
+<body>
+<a href="index.html">返回首页</a>
+<hr><br>
+支持主从进程的设置与获取 <br>
+
+
+<p> <code>app.getPath('userData')</code> </p>
+
+electron-store : <span class="set-path"></span>/confg.json
+
+<hr>
+
+设置 key:unicorn的值 <input type="text" name="unicorn" value="hello word" > <br>
+<button onclick="set_unicorn()" >设置unicorn</button>
+<button onclick="get_unicorn()">获取unicorn</button>
+<button onclick="del_unicorn()">删除unicorn</button>
+<p>unicorn: <span class="unicorn"></span></p>
+
+
+<button onclick="set_bar()" >设置foo.bar</button>
+<button onclick="get_bar()">获取foo.bar</button>
+<p>bar: <span class="bar"></span></p>
+
+
+<p>以下信息打印到控制台</p>
+<button onclick="size()">config.size</button><br><br>
+<button onclick="config_store()">config.store 所有值</button><br><br>
+<button onclick="config_path()">config.path 配置文件路径 </button><br><br>
+<button onclick="config_openInEditor()">config.openInEditor 用编辑器打开</button><br><br>
+
+
+<script>
+
+const {app} = require('electron').remote;
+
+const Store = require('electron-store');
+
+let option={
+    name:"config",//文件名称,默认 config
+    fileExtension:"json",//文件后缀,默认json
+    cwd:app.getPath('userData'),//文件位置,尽量不要动
+//    encryptionKey:"aes-256-cbc" ,//对配置文件进行加密
+    clearInvalidConfig:true, // 发生 SyntaxError  则清空配置,
+}
+const  store = new Store(option);
+
+window.onload=()=>{
+    getPath()
+}
+
+
+
+function getPath() {
+    document.querySelector('.set-path').innerText=app.getPath('userData')
+}
+
+function set_unicorn() {
+    let value = document.querySelector('input[name=unicorn]').value;
+    store.set('unicorn',value);
+}
+function get_unicorn() {
+    document.querySelector('.unicorn').innerText =  store.get('unicorn')
+}
+function del_unicorn() {
+    store.delete('unicorn')
+    get_unicorn()
+}
+store.onDidChange('unicorn',function (newValue, oldValue) {
+    document.querySelector('.unicorn').innerText=`更改 newValue :`+newValue+"  ,"+"oldValue : "+oldValue;
+})
+
+
+function set_bar() {
+    store.set('foo.bar', '点符号获取数据');
+}
+function get_bar() {
+    document.querySelector('.bar').innerText =  store.get('foo.bar')
+}
+
+function size(){
+    console.log(store.size);
+}
+
+function config_store(){
+    console.log(store.store);
+}
+function config_path(){
+    console.log(store.path);
+}
+function config_openInEditor(){
+    store.openInEditor();
+}
+
+</script>
+
+</body>
+</html>
