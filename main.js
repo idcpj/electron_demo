@@ -9,9 +9,6 @@ require('./demo/js/settings');//任务列表
 
 // const {Single}  =require('./demo/js/单例启动');
 
-const Store = require('electron-store');
-const  store = new Store();
-store.set("hello","word")
 
 // 创建应用程序对象
 // 创建一个浏览器窗口，主要用来加载HTML页面
