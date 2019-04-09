@@ -64,8 +64,7 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "ele_图标名",
-      "include": "script/builder.nsi"
+      "shortcutName": "ele_图标名"
     }
   },
   "devDependencies": {

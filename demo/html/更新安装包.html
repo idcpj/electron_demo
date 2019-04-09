@@ -6,8 +6,15 @@
     <title>更新安装包</title>
 </head>
 <body>
+<a href="index.html">返回首页</a>
+<hr><br>
+
 
 <button onclick="update()"> 点击询问更新</button>
+<p class="show-txt"></p>
+<p class="show-percent"></p>
+<br>
+<hr>
 主进程,把 updateHandle 放到 createWindow函数中
 
 <pre><code>
@@ -91,21 +98,19 @@ exports.updateHandle=() =>{
 
         ipcRenderer.on("message", (event, text) => {
             console.log("===message===");
-//            console.log(text);
-            this.tips = text;
+
+            document.querySelector('.show-txt').innerText=text;
         });
         ipcRenderer.on("downloadProgress", (event, progressObj)=> {
             console.log("===downloadProgress===");
-            this.downloadPercent = progressObj.percent || 0;
-//            console.log(progressObj.percent);
+            let  downloadPercent = progressObj.percent || 0;
+            document.querySelector('.show-percent').innerText= downloadPercent
+
         });
         ipcRenderer.on("isUpdateNow", () => {
             console.log("===isUpdateNow===");
             ipcRenderer.send("isUpdateNow");
         });
-
-        ipcRenderer.removeAll(["message", "downloadProgress", "isUpdateNow"]);//remove只能移除单个事件，单独封装removeAll移除所有事件
-
     }
 
 </code></pre>
@@ -118,23 +123,20 @@ exports.updateHandle=() =>{
 
         ipcRenderer.on("message", (event, text) => {
             console.log("===message===");
-//            console.log(text);
-            this.tips = text;
+
+            document.querySelector('.show-txt').innerText=text;
         });
         ipcRenderer.on("downloadProgress", (event, progressObj)=> {
             console.log("===downloadProgress===");
-            this.downloadPercent = progressObj.percent || 0;
-//            console.log(progressObj.percent);
+            let  downloadPercent = progressObj.percent || 0;
+            document.querySelector('.show-percent').innerText= downloadPercent
+
         });
         ipcRenderer.on("isUpdateNow", () => {
             console.log("===isUpdateNow===");
             ipcRenderer.send("isUpdateNow");
         });
-
-        ipcRenderer.removeAll(["message", "downloadProgress", "isUpdateNow"]);//remove只能移除单个事件，单独封装removeAll移除所有事件
-
     }
-
 
 </script>
 </body>
