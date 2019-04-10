@@ -50,7 +50,10 @@
       ]
     },
     "mac": {
-      "category": "public.app-category.developer-tools"
+      "category": "public.app-category.developer-tools",
+      "target": [
+        "dmg"
+      ]
     },
     "win": {
       "icon": "assets/img/ele.png",

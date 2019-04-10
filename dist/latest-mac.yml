@@ -1,12 +1,12 @@
-version: 1.0.3
+version: 1.0.2
 files:
-  - url: ele_demo-1.0.3.zip
-    sha512: u2WWMaBtEO8ZmAyK6sll3eOyETvzVBedN0eJ3oVJCSE5SUfD4SakgbsrkKn0ig+/7CqUlVJPYXUThSgSuK+jIg==
-    size: 54280136
-    blockMapSize: 58020
-  - url: ele_demo-1.0.3.dmg
-    sha512: b3f0Q+1olaocTDdfsZQqQ0ZJc35cENFcaBKI/H8/CkvEGmS62gPlQcTD1n1HKsOj3Q2B9+D7sI5wDKyV6l/pbw==
-    size: 56011680
-path: ele_demo-1.0.3.zip
-sha512: u2WWMaBtEO8ZmAyK6sll3eOyETvzVBedN0eJ3oVJCSE5SUfD4SakgbsrkKn0ig+/7CqUlVJPYXUThSgSuK+jIg==
-releaseDate: '2019-04-10T14:33:08.630Z'
+  - url: ele_demo-1.0.2.zip
+    sha512: ljJd7cql4H/YnSJ/Jr+VOd1o+Uiwi/zUafwZyZtHxGWmntUqXo6uDgKdeX6pT26VbN0TYupqx+NTTfxK4R52sQ==
+    size: 54280112
+    blockMapSize: 57993
+  - url: ele_demo-1.0.2.dmg
+    sha512: xf5SAWoWB2HDM4f9mY4dQjDuLIiJwA3aZfTw8ciGLWHEHhcIasZd6aKfaYhqExHb8tlEgYPwJ+4DYnff/cPo/w==
+    size: 56011619
+path: ele_demo-1.0.2.zip
+sha512: ljJd7cql4H/YnSJ/Jr+VOd1o+Uiwi/zUafwZyZtHxGWmntUqXo6uDgKdeX6pT26VbN0TYupqx+NTTfxK4R52sQ==
+releaseDate: '2019-04-10T14:55:47.659Z'

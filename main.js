@@ -5,11 +5,13 @@ let {buildMenu,findReopenMenuItem} = require('./demo/js/创建菜单');
 const {shortcut,unregister} = require('./demo/js/设置全局快捷键');
 require('./demo/js/ipcMain');//进程间通讯
 require('./demo/js/settings');//任务列表
-require('./demo/js/创建状态栏视图');//任务列表
 
 // const {Single}  =require('./demo/js/单例启动');
 if (process.platform === 'win32') {
     require('./demo/js/任务列表');//任务列表
+    //在 mac 中引入报错
+    require('./demo/js/创建状态栏视图');//任务列表
+
 }
 
 

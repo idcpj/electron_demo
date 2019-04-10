@@ -3,3 +3,6 @@
 .idea
 /node_modules
 dist/mac
+dist/ele_demo-*.dmg
+dist/ele_demo-*.exe
+dist/ele_demo-*.zip
