@@ -1,0 +1,12 @@
+version: 1.0.3
+files:
+  - url: ele_demo-1.0.3.zip
+    sha512: u2WWMaBtEO8ZmAyK6sll3eOyETvzVBedN0eJ3oVJCSE5SUfD4SakgbsrkKn0ig+/7CqUlVJPYXUThSgSuK+jIg==
+    size: 54280136
+    blockMapSize: 58020
+  - url: ele_demo-1.0.3.dmg
+    sha512: b3f0Q+1olaocTDdfsZQqQ0ZJc35cENFcaBKI/H8/CkvEGmS62gPlQcTD1n1HKsOj3Q2B9+D7sI5wDKyV6l/pbw==
+    size: 56011680
+path: ele_demo-1.0.3.zip
+sha512: u2WWMaBtEO8ZmAyK6sll3eOyETvzVBedN0eJ3oVJCSE5SUfD4SakgbsrkKn0ig+/7CqUlVJPYXUThSgSuK+jIg==
+releaseDate: '2019-04-10T14:33:08.630Z'
