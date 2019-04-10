@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>electron-context-menu</title>
+</head>
+<body>
+
+<a href="index.html">返回首页</a>
+<hr><br>
+
+
+<img src="../img/demo.ico" alt="">
+
+
+<script>
+    const {app} = require('electron').remote;
+
+
+    const contextMenu = require('electron-context-menu');
+
+    contextMenu({
+        prepend: (params, browserWindow) => [{
+            label: 'Rainbow',
+            // 只对图片有作用
+            visible: params.mediaType === 'image'
+        },
+        ],
+        showCopyImageAddress:true, //复制文件路径
+        showSaveImageAs:true, // 默认false
+        showInspectElement:true, //取消定位元素开关
+        labels: {
+            cut: 'Configured Cut',
+            copy: 'Configured Copy',
+            paste: 'Configured Paste',
+            save: 'Configured Save Image',
+            saveImageAs: 'Configured Save Image As…',
+            copyLink: 'Configured Copy Link',
+            copyImageAddress: 'Configured Copy Image Address',
+            inspect: 'Configured Inspect'
+        }
+    });
+    app.whenReady();
+</script>
+
+</body>
+</html>

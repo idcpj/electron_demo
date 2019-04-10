@@ -5,11 +5,13 @@ let {buildMenu,findReopenMenuItem} = require('./demo/js/创建菜单');
 const {shortcut,unregister} = require('./demo/js/设置全局快捷键');
 require('./demo/js/ipcMain');//进程间通讯
 require('./demo/js/settings');//任务列表
+require('./demo/js/创建状态栏视图');//任务列表
 
 // const {Single}  =require('./demo/js/单例启动');
 if (process.platform === 'win32') {
     require('./demo/js/任务列表');//任务列表
 }
+
 
 // 创建应用程序对象
 // 创建一个浏览器窗口，主要用来加载HTML页面
@@ -72,7 +74,8 @@ function createWindow(){
     mainWindow=new BrowserWindow({
         width:1200,
         height:800,
-        nodeIntegration:true
+        nodeIntegration:true,
+        // frame:false,
     });
 
     if (debug){
