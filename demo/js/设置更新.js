@@ -1,7 +1,7 @@
 const {ipcMain} = require('electron')
 
 const {autoUpdater} = require('electron-updater');
-const uploadUrl=require('../../package.json').build.publish[0].url;
+const uploadUrl=`https://raw.githubusercontent.com/idcpj/electron_demo/master/dist`
 
 
 // 检测更新，在你想要检查更新的时候执行，renderer事件触发后的操作自行编写
