@@ -36,7 +36,7 @@
         ipcRenderer.on("downloadProgress", (event, progressObj)=> {
             console.log("===downloadProgress===");
             let  downloadPercent = progressObj.percent || 0;
-            document.querySelector('.show-percent').innerText= downloadPercent //0.6482095033807579 百分数
+            document.querySelector('.show-percent').innerText= downloadPercent
 
         });
         ipcRenderer.on("isUpdateNow", () => {
