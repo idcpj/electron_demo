@@ -127,7 +127,7 @@ exports.buildMenu=()=> {
 
     // 针对Mac端的一些配置
     if (process.platform === 'darwin') {
-        const name = electron.app.getName();
+        const name = app.getName();
         template.unshift({
             label: name,
             submenu: [{
