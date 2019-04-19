@@ -5,6 +5,7 @@ let {buildMenu,findReopenMenuItem} = require('./demo/js/创建菜单');
 const {shortcut,unregister} = require('./demo/js/设置全局快捷键');
 require('./demo/js/ipcMain');//进程间通讯
 require('./demo/js/settings');//任务列表
+require('./demo/js/协议启动.js');
 
 // const {Single}  =require('./demo/js/单例启动');
 if (process.platform === 'win32') {
@@ -19,7 +20,7 @@ if (process.platform === 'win32') {
 // 创建一个浏览器窗口，主要用来加载HTML页面
 
 // 声明一个BrowserWindow对象实例
-mainWindow = global.mainWindow;
+ global.mainWindow ={}
 
 const debug = /--debug/.test(process.argv[2]);
 

@@ -1,7 +1,6 @@
 const {app} = require('electron');
 const path =require('path');
 
-if (!app) return;
 if (process.defaultApp) {
     if (process.argv.length >= 2) {
         app.setAsDefaultProtocolClient('electron-demo', process.execPath, [path.resolve(process.argv[1])])
